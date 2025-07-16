@@ -20,8 +20,7 @@ struct SessionCardView: View {
 
             ctaView
         }
-        .padding([.horizontal, .bottom], 16)
-        .padding(.top, 24)
+        .padding(24)
         .background(
             background
         )
@@ -33,6 +32,7 @@ struct SessionCardView: View {
         VStack(spacing: 12) {
 
             HStack {
+                Spacer()
                 if viewModel.isDisplayingCompletedIcon {
                     Image(viewModel.completedIconName)
                         .renderingMode(.template)
@@ -47,6 +47,10 @@ struct SessionCardView: View {
                 if viewModel.isDisplayingCompletedIcon {
                     Spacer().frame(width: 16)
                 }
+                Spacer()
+            }
+            .overlay {
+                premiumView
             }
 
             Rectangle()
@@ -117,6 +121,21 @@ struct SessionCardView: View {
     private var background: some View {
         RoundedRectangle(cornerRadius: 16)
             .fill(.white.opacity(0.8))
+    }
+
+    private var premiumView: some View {
+        HStack {
+            Spacer()
+
+            if viewModel.isPremium {
+                Image(viewModel.premiumIconName)
+                    .renderingMode(.template)
+                    .resizedToFit(height: 18)
+                    .padding(.trailing, 4)
+                    .padding(.bottom, 2)
+                    .foregroundStyle(.gray.opacity(0.5))
+            }
+        }
     }
 }
 

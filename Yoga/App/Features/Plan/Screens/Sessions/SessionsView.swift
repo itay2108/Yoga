@@ -128,7 +128,7 @@ struct SessionsView: View {
             items: sessions
         ) { session, isSelected in
             SessionCardView(viewModel: viewModel.cardViewModel(for: session))
-                .frame(width: UIScreen.main.bounds.width - 100)
+                .frame(width: UIScreen.main.bounds.width - 72)
         } indicator: { index in
             Text("\(index + 1)")
                 .appFont(

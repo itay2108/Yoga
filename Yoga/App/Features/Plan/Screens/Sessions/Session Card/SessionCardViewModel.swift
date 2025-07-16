@@ -52,6 +52,14 @@ final class SessionCardViewModel {
         return "scroller_checkmark"
     }
 
+    var isPremium: Bool {
+        return true // are they all premium though? :)
+    }
+
+    var premiumIconName: String {
+        return "premium_icon"
+    }
+
     // MARK: - Combine
 
     private let sessionStartPressedSubject = PassthroughSubject<Void, Never>()

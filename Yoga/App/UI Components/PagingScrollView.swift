@@ -11,9 +11,9 @@ import Data
 
 struct PagingScrollView<Item: Identifiable, Content: View, Indicator: View>: View {
     private let items: [Item]
-    private let spacing: CGFloat = 10
-    private let scaleDecrease: CGFloat = 0.95
-    private let sideMargin: CGFloat = 0.05
+    private let spacing: CGFloat = 0
+    private let scaleDecrease: CGFloat = 0.9
+    private let sideMargin: CGFloat = 0.1
     private let pageContent: (Item, Bool) -> Content
     private let indicatorContent: (Int) -> Indicator
 
@@ -70,6 +70,7 @@ struct PagingScrollView<Item: Identifiable, Content: View, Indicator: View>: Vie
                         .scaleEffect(scale)
                         .frame(width: cardWidth)
                         .animation(.spring(), value: currentPage)
+                        .layoutPriority(1)
                 }
             }
             .padding(.horizontal, sideSpacing)
@@ -129,18 +130,23 @@ struct PagingScrollView<Item: Identifiable, Content: View, Indicator: View>: Vie
         @State private var currentPage = 0
         
         var body: some View {
-            PagingScrollView(currentPage: .constant(0), items: try! DefaultPlanRepository().getSessions().throwErrors()) { item, isCurrent in
-                SessionCardView(
-                    viewModel: .init(
-                        session: item
-                    )
-                )
-                .padding(16)
+            ZStack {
+                Color.blue.opacity(0.2)
+                    .ignoresSafeArea()
 
-            } indicator: { index in
-                Text("\(index)")
-                    .foregroundStyle(.white)
-                    .appFont(size: 18)
+                PagingScrollView(currentPage: .constant(0), items: try! DefaultPlanRepository().getSessions().throwErrors()) { item, isCurrent in
+                    SessionCardView(
+                        viewModel: .init(
+                            session: item
+                        )
+                    )
+                    .frame(width: UIScreen.main.bounds.width - 84)
+
+                } indicator: { index in
+                    Text("\(index)")
+                        .foregroundStyle(.white)
+                        .appFont(size: 18)
+                }
             }
         }
     }
