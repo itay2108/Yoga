@@ -6,13 +6,32 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BCDFA3AC2E27E5910093DA94 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = BCDFA3AB2E27E5910093DA94 /* Core */; };
+		BCDFA3AE2E27E5950093DA94 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = BCDFA3AD2E27E5950093DA94 /* Data */; };
+		BCDFA3B02E27E5950093DA94 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = BCDFA3AF2E27E5950093DA94 /* Domain */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		BC26553B2E27DBF100FE8512 /* Yoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BCDFA3C12E27EF240093DA94 /* Exceptions for "Yoga" folder in "Yoga" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BC26553A2E27DBF100FE8512 /* Yoga */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BC26553D2E27DBF100FE8512 /* Yoga */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BCDFA3C12E27EF240093DA94 /* Exceptions for "Yoga" folder in "Yoga" target */,
+			);
 			path = Yoga;
 			sourceTree = "<group>";
 		};
@@ -23,6 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDFA3B02E27E5950093DA94 /* Domain in Frameworks */,
+				BCDFA3AE2E27E5950093DA94 /* Data in Frameworks */,
+				BCDFA3AC2E27E5910093DA94 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				BC26553D2E27DBF100FE8512 /* Yoga */,
+				BCDFA3AA2E27E5910093DA94 /* Frameworks */,
 				BC26553C2E27DBF100FE8512 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +66,13 @@
 				BC26553B2E27DBF100FE8512 /* Yoga.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BCDFA3AA2E27E5910093DA94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,6 +95,9 @@
 			);
 			name = Yoga;
 			packageProductDependencies = (
+				BCDFA3AB2E27E5910093DA94 /* Core */,
+				BCDFA3AD2E27E5950093DA94 /* Data */,
+				BCDFA3AF2E27E5950093DA94 /* Domain */,
 			);
 			productName = Yoga;
 			productReference = BC26553B2E27DBF100FE8512 /* Yoga.app */;
@@ -256,6 +289,7 @@
 				DEVELOPMENT_TEAM = 6XBXP7U8AF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Yoga/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +318,7 @@
 				DEVELOPMENT_TEAM = 6XBXP7U8AF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Yoga/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +359,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BCDFA3AB2E27E5910093DA94 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+		BCDFA3AD2E27E5950093DA94 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		BCDFA3AF2E27E5950093DA94 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BC2655332E27DBF100FE8512 /* Project object */;
 }
