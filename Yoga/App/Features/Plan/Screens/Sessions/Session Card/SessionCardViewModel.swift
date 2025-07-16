@@ -19,7 +19,7 @@ final class SessionCardViewModel {
         return "Session \(session.index + 1)"
     }
 
-    let lendthIconName: String = "session_duration"
+    let lengthIconName: String = "session_duration"
     var lengthText: String {
         return "\(session.length) min"
     }

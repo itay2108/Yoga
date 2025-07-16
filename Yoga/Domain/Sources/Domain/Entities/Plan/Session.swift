@@ -8,7 +8,7 @@
 import Core
 import Foundation
 
-public struct Session: Sendable {
+public struct Session: Sendable, Identifiable {
     public let index: Int
     public let length: Int
     public let quoteAuthor: String
@@ -34,10 +34,12 @@ public struct Session: Sendable {
         self.chapter = chapter
         self.difficulty = difficulty
     }
+
+    public var id: Int { index }
 }
 
 public extension Session {
-    public init(
+    init(
         index: Int,
         length: Int,
         quoteAuthor: String,

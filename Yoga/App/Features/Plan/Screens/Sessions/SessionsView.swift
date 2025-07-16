@@ -29,6 +29,7 @@ struct SessionsView: View {
             } message: {
                 Text(viewModel.infoPopupMessage)
             }
+            .animation(.default, value: viewModel.currentSessionIndex)
     }
 
     @ViewBuilder
@@ -61,9 +62,8 @@ struct SessionsView: View {
                 planHeaderView()
                     .padding(.top, 48)
                 Spacer()
-                cardScrollView(sessions)
-                Spacer()
             }
+            cardScrollView(sessions)
         }
     }
 
@@ -97,6 +97,7 @@ struct SessionsView: View {
             infoButtonView
                 .padding(.horizontal, 36)
         }
+        .foregroundStyle(.neutral1)
     }
 
     private var infoButtonView: some View {
@@ -120,23 +121,21 @@ struct SessionsView: View {
     }
 
     private func cardScrollView(_ sessions: ViewModel.Model) -> some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
-                Spacer().frame(width: 56)
-                ForEach(sessions, id: \.index) { session in
-                    SessionCardView(viewModel: viewModel.cardViewModel(for: session))
-                        .frame(width: UIScreen.main.bounds.width - 100)
-                }
-                Spacer().frame(width: 56)
-
-            }
+        PagingScrollView(
+            currentPage: $viewModel.currentSessionIndex,
+            items: sessions
+        ) { session, isSelected in
+            SessionCardView(viewModel: viewModel.cardViewModel(for: session))
+                .frame(width: UIScreen.main.bounds.width - 100)
+        } indicator: { index in
+            Text("\(index + 1)")
+                .appFont(
+                    viewModel.currentSessionIndex == index ? .medium : .book,
+                    size: 20
+                )
+                .foregroundStyle(.white)
         }
-    }
 
-    private func sessionCard(_ session: ViewModel.Model.Element) -> some View {
-        ZStack {
-
-        }
     }
 
     private var errorView: some View {

@@ -42,6 +42,7 @@ struct SessionCardView: View {
 
                 Text(verbatim: viewModel.title)
                     .appFont(.medium, size: 18)
+                    .foregroundStyle(.neutral1)
 
                 if viewModel.isDisplayingCompletedIcon {
                     Spacer().frame(width: 16)
@@ -68,11 +69,11 @@ struct SessionCardView: View {
 
     private var sessionTimeView: some View {
         HStack(alignment: .lastTextBaseline, spacing: 6) {
-            Image(viewModel.lendthIconName)
+            Image(viewModel.lengthIconName)
                 .resizedToFit(height: 12)
             Text(viewModel.lengthText)
                 .appFont()
-                .foregroundStyle(Color(.text))
+                .foregroundStyle(Color(.neutral1))
         }
     }
 
@@ -84,7 +85,7 @@ struct SessionCardView: View {
 
             Text(viewModel.difficultyText)
                 .appFont()
-                .foregroundStyle(Color(.text))
+                .foregroundStyle(Color(.neutral1))
         }
     }
 
@@ -99,7 +100,7 @@ struct SessionCardView: View {
             Text(viewModel.quoteAuthor)
                 .appFont(size: 11)
         }
-        .foregroundStyle(Color(.text))
+        .foregroundStyle(Color(.neutral1))
         .multilineTextAlignment(.center)
     }
 

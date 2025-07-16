@@ -19,6 +19,7 @@ final class SessionsViewModel: ObservableObject {
     @Published private(set) var loadingState: LoadingState<Model> = .idle
 
     @Published var isShowingInfoPopup: Bool = false
+    @Published var currentSessionIndex: Int = defaults.integer(for: .latestCompletedSessionIndex) ?? 0
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -32,7 +33,7 @@ final class SessionsViewModel: ObservableObject {
 
     private var currentSession: Session? {
         if case .loaded(let sessions) = loadingState {
-            return sessions[safe: latestCompletedSessionIndex]
+            return sessions[safe: currentSessionIndex]
         } else {
             return nil
         }
