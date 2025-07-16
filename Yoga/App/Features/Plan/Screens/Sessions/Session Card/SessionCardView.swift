@@ -20,7 +20,8 @@ struct SessionCardView: View {
 
             ctaView
         }
-        .padding(24)
+        .padding([.horizontal, .top], 24)
+        .padding(.bottom, 18)
         .background(
             background
         )
@@ -98,11 +99,11 @@ struct SessionCardView: View {
     private var quoteView: some View {
         VStack(spacing: 16) {
             Text(viewModel.quote)
-                .appFont(size: 13)
-                .frame(height: 26)
+                .appFont(size: 15)
+                .frame(height: 36)
 
             Text(viewModel.quoteAuthor)
-                .appFont(size: 11)
+                .appFont(size: 12)
         }
         .foregroundStyle(Color(.neutral1))
         .multilineTextAlignment(.center)

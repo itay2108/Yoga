@@ -60,12 +60,13 @@ struct SessionsView: View {
 
             VStack {
                 planHeaderView()
-                    .padding(.top, 48)
+                    .padding(.top, 56)
                 Spacer()
             }
             .zIndex(2)
 
             cardScrollView(sessions)
+                .padding(.top, 24)
         }
     }
 
