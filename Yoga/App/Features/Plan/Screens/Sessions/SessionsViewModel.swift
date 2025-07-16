@@ -116,7 +116,7 @@ private extension SessionsViewModel {
     private func setupSubscriptions() {
         $currentSessionIndex
             .dropFirst()
-            .delay(for: 0.5, scheduler: DispatchQueue.main)
+            .delay(for: 0.3, scheduler: DispatchQueue.main)
             .sink { _ in
                 Haptics.softImpact()
             }
