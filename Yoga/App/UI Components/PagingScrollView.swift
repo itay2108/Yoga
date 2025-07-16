@@ -98,7 +98,8 @@ struct PagingScrollView<Item: Identifiable, Content: View, Indicator: View>: Vie
         let initialOffset = (totalWidth - indicatorWidth) / 2
         let pageRange = CGFloat(items.count)
         let dynamicOffset = -((currentPageCGFloat / pageRange) * (totalWidth - indicatorWidth))
-        let offsetX = initialOffset + dynamicOffset + indicatorWidth
+        let spacingOffset = -(currentPageCGFloat * 10)
+        let offsetX = initialOffset + dynamicOffset + indicatorWidth + spacingOffset
 
         ZStack(alignment: .leading) {
             HStack(spacing: 0) {
@@ -124,17 +125,25 @@ struct PagingScrollView<Item: Identifiable, Content: View, Indicator: View>: Vie
 }
 
 #Preview {
-    PagingScrollView(currentPage: .constant(0), items: try! DefaultPlanRepository().getSessions().throwErrors()) { item, isCurrent in
-        SessionCardView(
-            viewModel: .init(
-                session: item
-            )
-        )
-        .padding(16)
+    struct PreviewView: View {
+        @State private var currentPage = 0
+        
+        var body: some View {
+            PagingScrollView(currentPage: .constant(0), items: try! DefaultPlanRepository().getSessions().throwErrors()) { item, isCurrent in
+                SessionCardView(
+                    viewModel: .init(
+                        session: item
+                    )
+                )
+                .padding(16)
 
-    } indicator: { index in
-        Text("\(index)")
-            .foregroundStyle(.white)
-            .appFont(size: 18)
+            } indicator: { index in
+                Text("\(index)")
+                    .foregroundStyle(.white)
+                    .appFont(size: 18)
+            }
+        }
     }
+
+    return PreviewView()
 }

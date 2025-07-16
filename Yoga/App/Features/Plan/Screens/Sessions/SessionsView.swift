@@ -63,6 +63,8 @@ struct SessionsView: View {
                     .padding(.top, 48)
                 Spacer()
             }
+            .zIndex(2)
+
             cardScrollView(sessions)
         }
     }

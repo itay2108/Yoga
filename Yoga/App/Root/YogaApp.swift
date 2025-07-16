@@ -13,12 +13,7 @@ struct YogaApp: App {
     private let container = AppContainer()
 
     init() {
-        let tabBarAppearance = UITabBarAppearance()
-        tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = UIColor.white.withAlphaComponent(0.8)  // or any custom UIColor
-
-        UITabBar.appearance().standardAppearance = tabBarAppearance
-        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        configureTabViewAppearance()
     }
 
     var body: some Scene {
@@ -49,5 +44,25 @@ struct YogaApp: App {
         tab.iconName(
             isSelected: selectedTab == tab
         )
+    }
+}
+
+
+private extension YogaApp {
+    private func configureTabViewAppearance() {
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+
+        let itemAppearance = UITabBarItemAppearance()
+        itemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gray]
+        itemAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.black]
+
+        tabBarAppearance.stackedLayoutAppearance = itemAppearance
+        tabBarAppearance.inlineLayoutAppearance = itemAppearance
+        tabBarAppearance.compactInlineLayoutAppearance = itemAppearance
+
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
     }
 }
