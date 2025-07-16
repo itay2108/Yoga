@@ -63,6 +63,7 @@ final class SessionsViewModel: ObservableObject {
 
     init(useCase: GetSessionsUseCase) {
         self.useCase = useCase
+        setupSubscriptions()
     }
 
     func loadSessions() async {
@@ -110,5 +111,15 @@ private extension SessionsViewModel {
         } else {
             return
         }
+    }
+
+    private func setupSubscriptions() {
+        $currentSessionIndex
+            .dropFirst()
+            .delay(for: 0.5, scheduler: DispatchQueue.main)
+            .sink { _ in
+                Haptics.softImpact()
+            }
+            .store(in: &cancellables)
     }
 }
